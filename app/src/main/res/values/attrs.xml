@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DanmakuView">
+        <attr name="danmaku_max_line" format="integer" />
+        <attr name="danmaku_line_margin" format="dimension" />
+        <attr name="danmaku_item_min_margin" format="dimension" />
+        <attr name="danmaku_velocity" format="float" />
+        <attr name="danmaku_strategy" format="enum">
+            <enum name="sequential" value="1" />
+            <enum name="random" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

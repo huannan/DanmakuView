@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_padding">50dp</dimen>
+    <!--弹道高度-->
+    <dimen name="item_danmaku_line_height">240dp</dimen>
+    <!--弹道垂直间距-->
+    <dimen name="item_danmaku_line_margin">40dp</dimen>
+    <!--弹幕最小横向间距-->
+    <dimen name="item_danmaku_item_min_margin">170dp</dimen>
+</resources>
