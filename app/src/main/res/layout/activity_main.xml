@@ -9,11 +9,10 @@
         android:id="@+id/danmaku_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="100dp"
         app:danmaku_item_min_margin="@dimen/item_danmaku_item_min_margin"
         app:danmaku_line_margin="@dimen/item_danmaku_line_margin"
-        app:danmaku_max_line="5"
-        app:danmaku_strategy="random"
+        app:danmaku_max_line="4"
+        app:danmaku_strategy="sequential"
         app:danmaku_velocity="0.3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,5 +54,17 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_pause" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="@dimen/item_padding"
+        android:layout_marginBottom="@dimen/item_padding"
+        android:text="关闭"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_resume" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

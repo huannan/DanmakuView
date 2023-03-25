@@ -2,6 +2,7 @@ package com.nan.danmakuview.widget.danmakuview
 
 import android.animation.Animator
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.TextUtils
 import android.util.AttributeSet
@@ -67,6 +68,9 @@ class DanmakuView @JvmOverloads constructor(
     // 弹幕缓存池
     private val pool = Pools.SimplePool<View>(MAX_POOL_SIZE)
 
+    // 是否已销毁
+    private var isDestroy = false
+
     init {
         // 初始化控件属性
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DanmakuView)
@@ -92,7 +96,7 @@ class DanmakuView @JvmOverloads constructor(
             val danmakuItemView = pool.acquire() ?: LayoutInflater.from(context).inflate(R.layout.item_danmaku, this, false)
             // 设置内容，加空格是为了防止文字显示被截断
             val danmakuTextView = danmakuItemView.findViewById<TextView>(R.id.tv_danmaku)
-            danmakuTextView.text = content
+            danmakuTextView.text = resources.getString(R.string.text_danmaku, content)
             // 根据策略确定需要展示弹道
             val line = nextLine
             // 切换下一次展示的弹道
@@ -141,6 +145,9 @@ class DanmakuView @JvmOverloads constructor(
                 }
 
                 override fun onAnimationEnd(animation: Animator) {
+                    if (isDestroy) {
+                        return
+                    }
                     // 从父控件中移除
                     removeView(danmakuItemView)
                     // 从弹道中移除
@@ -193,6 +200,7 @@ class DanmakuView @JvmOverloads constructor(
 
     override fun onDetachedFromWindow() {
         isPlaying = false
+        isDestroy = true
         lines.values.forEach { queue ->
             queue.forEach {
                 it.animator.cancel()

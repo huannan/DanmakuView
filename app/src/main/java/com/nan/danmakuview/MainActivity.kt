@@ -50,5 +50,9 @@ class MainActivity : AppCompatActivity() {
         viewBinding.btnPause.setOnClickListener {
             viewBinding.danmakuView.pause()
         }
+
+        viewBinding.btnFinish.setOnClickListener {
+            finish()
+        }
     }
 }
