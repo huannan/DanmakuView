@@ -25,6 +25,14 @@ private const val MAX_POOL_SIZE = 20
 private const val STRATEGY_SEQUENTIAL = 1
 private const val STRATEGY_RANDOM = 2
 
+/**
+ * 一个基于属性动画的简单可靠可自由修改弹幕内容布局的高性能弹幕库
+ * 实现原理：
+ * 1. 属性动画控制弹幕滚动、暂停、播放
+ * 2. 通过缓存池防止内存抖动
+ * 3. 自定义控件、测量等相关知识
+ * 4. 队列数据结构实现弹幕排队
+ */
 class DanmakuView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
@@ -86,6 +94,9 @@ class DanmakuView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * 添加弹幕
+     */
     fun addDanmaku(content: String) {
         if (TextUtils.isEmpty(content)) {
             Log.d(TAG, "addDanmaku: content is empty")
@@ -172,6 +183,9 @@ class DanmakuView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * 播放
+     */
     fun resume() {
         if (!isPlaying) {
             isPlaying = true
@@ -187,6 +201,9 @@ class DanmakuView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * 暂停
+     */
     fun pause() {
         if (isPlaying) {
             isPlaying = false
