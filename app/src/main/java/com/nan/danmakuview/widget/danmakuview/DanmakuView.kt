@@ -215,6 +215,10 @@ class DanmakuView @JvmOverloads constructor(
         }
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(MeasureSpec.UNSPECIFIED, heightMeasureSpec)
+    }
+
     override fun onDetachedFromWindow() {
         isPlaying = false
         isDestroy = true
